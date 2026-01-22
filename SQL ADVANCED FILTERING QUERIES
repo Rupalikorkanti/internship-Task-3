@@ -1,0 +1,91 @@
+-- SQL ADVANCED FILTERING QUERIES
+
+-- 1. Create Database
+CREATE DATABASE intern_training_db;
+
+USE intern_training_db;
+
+-- 2. Create Table
+CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    email VARCHAR(100),
+    age INT,
+    city VARCHAR(50)
+);
+
+-- 3. Insert Records
+INSERT INTO students (name, email, age, city) VALUES
+('Rupali', 'rupali@gmail.com', 22, 'Pune'),
+('Ankit', 'ankit@yahoo.com', 21, 'Mumbai'),
+('Sneha', NULL, 20, 'Delhi'),
+('Rahul', 'rahul@gmail.com', 24, 'Pune'),
+('Neha', 'neha@hotmail.com', 19, 'Hyderabad'),
+('Aman', 'aman@gmail.com', 23, 'Mumbai');
+
+-- 4. View All Records
+SELECT * FROM students;
+
+-- 5. Select Specific Columns
+SELECT name, email FROM students;
+
+-- 6. Filter Using WHERE
+SELECT * FROM students
+WHERE age > 20;
+
+-- 7. AND / OR Conditions
+SELECT * FROM students
+WHERE age >= 21 AND city = 'Pune';
+
+SELECT * FROM students
+WHERE city = 'Mumbai' OR city = 'Delhi';
+
+-- 8. LIKE Operator
+SELECT * FROM students
+WHERE name LIKE 'R%';
+
+SELECT * FROM students
+WHERE name LIKE '%ha%';
+
+SELECT * FROM students
+WHERE email LIKE '%@gmail.com';
+
+-- 9. IN Operator
+SELECT * FROM students
+WHERE city IN ('Pune', 'Mumbai');
+
+-- 10. BETWEEN Operator
+SELECT * FROM students
+WHERE age BETWEEN 20 AND 24;
+
+-- 11. NULL Handling
+SELECT * FROM students
+WHERE email IS NULL;
+
+SELECT * FROM students
+WHERE email IS NOT NULL;
+
+-- 12. Aliases
+SELECT
+    name AS Student_Name,
+    email AS Student_Email,
+    age AS Student_Age
+FROM students;
+
+-- 13. ORDER BY
+SELECT * FROM students
+ORDER BY age DESC;
+
+-- 14. LIMIT
+SELECT * FROM students
+LIMIT 3;
+
+-- 15. Real-Life Queries
+SELECT * FROM students
+WHERE city = 'Pune' AND age > 21;
+
+SELECT * FROM students
+WHERE city = 'Mumbai' AND email LIKE '%@gmail.com';
+
+SELECT * FROM students
+WHERE name LIKE '_____';
